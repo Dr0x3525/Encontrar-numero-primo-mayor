@@ -4,21 +4,10 @@ console.log("Aplicacion de numeros primos menores");
 console.log("Características de un número primo:");
 console.log("1.El número debe ser mayor que 1");
 console.log("2.El número solo debe ser divisible entre 1 y él mismo (sin dejar residuo).");
-console.log("Si el numero es decimal se tomara el valor aproximado")
-
-
-//inicializacion de variables
-let numero =  prompt("Escribe un numero")
-let numeroentero = parseInt(numero)
-
-
 
 
 //funciones
-
-//funcion verificar que un numero sea valido
-
-function verificarnumerovalido() {
+function verificarnumerovalido(numeroentero, numero) {
     //console.log(typeof(numeroentero))
     //console.log(typeof(numero))
     //console.log(numeroentero)
@@ -36,13 +25,11 @@ function verificarnumerovalido() {
 
 // Función verificar si el número es 1
 
-function verificarEsUno() {
+function verificarEsUno(numeroentero) {
     if (numeroentero === 1) {
         console.log("el numero 1 no es valido por las reglas anteriormente mencionadas")
-    
     return false    
     }
-
     else {
         return true;
     }
@@ -51,7 +38,7 @@ function verificarEsUno() {
 
 // Función verificar si el número es 2
 
-function verificarEsDos() {
+function verificarEsDos(numeroentero) {
     if (numeroentero === 2) {
         console.log("el numero 2 es el primo mas pequeño por ende no hay menores que el XD")
         return false    
@@ -62,7 +49,7 @@ function verificarEsDos() {
     }
 }
 
-function encontrarNumerosPrimosMenores() {  
+function encontrarNumerosPrimosMenores(numeroentero) {  
     for (let dividendo = numeroentero-1; dividendo >= 2; dividendo--) {
 
         let esCompuesto = false;
@@ -101,22 +88,26 @@ function encontrarNumerosPrimosMenores() {
     
     }
 }
-//fin funciones
-
-verificarnumerovalido(numeroentero);
-
-if (numerovalido === true) {
-
-    //verifica casos especiales
-    verificarEsUno(numeroentero)
-    verificarEsDos(numeroentero)
 
 
-        //si todo es correcto empieza a iterar
+function inicializacioncodigo() {
+    //inicializacion de variables
+    let numero =  prompt("Escribe un numero")
+    let numeroentero = parseInt(numero)
 
-    if (numerovalido === true) {
-        encontrarNumerosPrimosMenores(numeroentero)
+
+
+    if (verificarnumerovalido(numeroentero, numero) === true) {
+
+        if (verificarEsDos(numeroentero) || verificarEsUno(numeroentero) ) {
+            encontrarNumerosPrimosMenores(numeroentero)
+        }
     }
 
 }
+
+//fin funciones
+
+
+inicializacioncodigo()
 
